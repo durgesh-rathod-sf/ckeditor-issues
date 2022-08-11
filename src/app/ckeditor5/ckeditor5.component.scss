@@ -1,0 +1,41 @@
+.editor-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: relative;
+  width: 1260px;
+}
+
+#revision-viewer-container {
+  display: none;
+  .editor-container {
+    display: flex;
+  }
+}
+
+.editor-container > .ck-editor {
+  position: relative;
+  width: 950px;
+}
+
+.editor-container .ck-editor__top .ck-toolbar {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.editor-container .ck-editor__editable_inline {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.sidebar-container {
+  position: relative;
+  width: 600px;
+  overflow: hidden;
+  background: var(--ck-color-toolbar-background);
+  border: 1px solid var(--ck-color-toolbar-border);
+  margin-left: -1px;
+  // width: 0;
+  // visibility: hidden;
+  // display: none;
+}

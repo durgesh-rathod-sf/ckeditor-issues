@@ -1,0 +1,85 @@
+<div class="editors-holder">
+  <!-- The original editor !-->
+  <div id="editor-container">
+    <div class="editor-container">
+      <div id="editor"></div>
+      <!-- <div class="sidebar-container" id="sidebar-container"></div> -->
+    </div>
+  </div>
+
+  <!-- Structure for the revision viewer editor !-->
+  <div id="revision-viewer-container">
+    <div class="editor-container">
+      <div id="revision-viewer-editor"></div>
+      <div class="sidebar-container" id="revision-viewer-sidebar"></div>
+    </div>
+  </div>
+</div>
+
+<div style="display: flex; margin-top: 16px; column-gap: 16px">
+  <span
+    style="
+      display: inline-flex;
+      flex-flow: column;
+      row-gap: 16px;
+      min-width: 300px;
+    "
+  >
+    <button (click)="fetchRevisions()">Fetch revisions</button>
+    <h4>Revisions</h4>
+    <span
+      *ngFor="let revision of revisions"
+      style="
+        display: inline-flex;
+        flex-flow: column;
+        row-gap: 8px;
+        border: 1px solid gray;
+      "
+    >
+      <span style="display: inline-flex">
+        <label>Name:&nbsp;</label>
+        <span>{{ revision.name || "current revision" }}</span>
+      </span>
+      <span>
+        <label>ID:&nbsp;</label>
+        <span>{{ revision.id }}</span>
+      </span>
+    </span>
+  </span>
+  <span style="display: inline-flex; flex-flow: column; row-gap: 16px">
+    <span style="display: inline-flex; flex-flow: column">
+      <label>Target Revision ID</label>
+      <input #input1 type="text" style="width: 300px" />
+    </span>
+    <span style="display: inline-flex; flex-flow: column">
+      <label>Source Revision ID</label>
+      <input #input2 type="text" style="width: 300px" />
+    </span>
+    <button
+      (click)="compare(input1.value, input2.value)"
+      style="width: min-content"
+    >
+      Compare
+    </button>
+  </span>
+  <span style="display: inline-flex; flex-flow: column; row-gap: 16px">
+    <span style="display: inline-flex; flex-flow: column">
+      <label>Revision ID</label>
+      <input #input3 type="text" style="width: 300px" />
+    </span>
+    <button (click)="restore(input3.value)">Restore</button>
+  </span>
+  <span style="display: inline-flex; flex-flow: column; row-gap: 16px">
+    <span style="display: inline-flex; flex-flow: column">
+      <label>Revision ID</label>
+      <input #input4 type="text" style="width: 300px" />
+    </span>
+    <button (click)="getPlainData(input4.value)">Extract Plain Data</button>
+  </span>
+  <span style="display: inline-flex; flex-flow: column; row-gap: 16px">
+    <span style="display: inline-flex; flex-flow: column">
+      <label>Add clause</label>
+      <button (click)="addNewClauseHelper()">Add Clause</button>
+    </span>
+  </span>
+</div>
